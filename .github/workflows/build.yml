@@ -37,13 +37,13 @@ jobs:
       - name: Checksum
         shell: pwsh
         run: |
-          echo "::Set-Env Name=FILE_R_SHA256::$(.\scripts\CI\SHA256.ps1 .\release\release.zip)"
+          echo "::Set-Env Name=FILE_R_SHA256::$(.\scripts\CI\SHA256.ps1 .\release.zip)"
 
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
           name: Release
-          path: .\release\release.zip
+          path: release
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -54,7 +54,7 @@ jobs:
           prerelease: true
           draft: false
           files: |
-            .\release\release.zip
+            .\release.zip
           body: |
             [![](https://img.shields.io/badge/Telegram-Group-blue)](https://t.me/aioCloud) [![](https://img.shields.io/badge/Telegram-Channel-green)](https://t.me/aioCloud_channel)
             ## 更新日志
