@@ -9,6 +9,10 @@
 ```
 
 ## 配置文件
+```bash
+nano /etc/stream.json
+```
+
 ```jsonc
 {
     "api": 8888, // 看下文，好好想想
@@ -23,4 +27,10 @@
     "address": "11.4.5.14", // 当前机器的 IP 地址，用于 DNS 回复的
     "upstream": "1.1.1.1:53" // 上游 DNS 地址
 }
+```
+
+## 控制命令
+```bash
+systemctl enable --now stream # 开启自启同时启动
+systemctl disable --now stream # 关闭自启同时停止
 ```
