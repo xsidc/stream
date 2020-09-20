@@ -1,0 +1,65 @@
+name: aioCloud CI
+on: [push, pull_request]
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+      - name: Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15.x
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Dependencies
+        run: |
+          go get -v -d -t ./...
+
+      - name: Build
+        shell: pwsh
+        run: |
+          .\scripts\CI\BUILD.ps1
+      
+      - name: Run UPX
+        uses: crazy-max/ghaction-upx@v1
+        with:
+          version: latest
+          file: .\release\stream
+          args: --ultra-brute
+
+      - name: Compress
+        shell: pwsh
+        run: |
+          .\scripts\CI\PACK.ps1
+
+      - name: Checksum
+        shell: pwsh
+        run: |
+          echo "::Set-Env Name=FILE_R_SHA256::$(.\scripts\SHA256.ps1 release\release.zip)"
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Release
+          path: .\release\release.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          prerelease: true
+          draft: false
+          files: |
+            .\release\release.zip
+          body: |
+            [![](https://img.shields.io/badge/Telegram-Group-blue)](https://t.me/aioCloud) [![](https://img.shields.io/badge/Telegram-Channel-green)](https://t.me/aioCloud_channel)
+            ## 更新日志
+            * 将会很快更新
+            ## 校验和
+            | 文件名 | SHA256 |
+            | :-- | :-- |
+            | release.zip | ${{ env.FILE_R_SHA256 }} |
