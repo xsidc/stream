@@ -3,8 +3,15 @@
 
 简单的流媒体解锁后端
 
-## 食用方案
+## 食用方法
 ```bash
+# 从 GitHub Actions 或者 Releases 中下载 release.zip 并上传至 VPS 上
+rm -fr release
+mkdir release
+cd release
+cp ../release.zip .
+unzip release.zip
+rm -f release.zip
 ./deploy.sh
 ```
 
@@ -31,6 +38,6 @@ nano /etc/stream.json
 
 ## 控制命令
 ```bash
-systemctl enable --now stream # 开启自启同时启动
-systemctl disable --now stream # 关闭自启同时停止
+systemctl enable --now stream # 开启自启 并 启动服务
+systemctl disable --now stream # 关闭自启 兵 停止服务
 ```
