@@ -37,7 +37,7 @@ jobs:
       - name: Checksum
         shell: pwsh
         run: |
-          echo "::Set-Env Name=FILE_R_SHA256::$(.\scripts\SHA256.ps1 release\release.zip)"
+          echo "::Set-Env Name=FILE_R_SHA256::$(.\scripts\CI\SHA256.ps1 .\release\release.zip)"
 
       - name: Upload
         uses: actions/upload-artifact@v2
