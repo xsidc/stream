@@ -57,10 +57,7 @@
         "happyon.jp",
         "hulu.jp"
     ],
-    "allowedips": [
-        "114.114.114.114",
-        "114.114.115.115"
-    ],
+    "allowedips": [],
     "address": "11.4.5.14",
     "upstream": "1.1.1.1:53"
 }
