@@ -73,6 +73,7 @@ func handleHTTP(client net.Conn) {
 	defer client.Close()
 
 	if addr, _, _ := net.SplitHostPort(client.RemoteAddr().String()); !checkAllowIP(addr) {
+		log.Printf("[APP][HTTP][%s] IP Not Allow", addr)
 		return
 	}
 
@@ -168,6 +169,7 @@ func handleTLS(client net.Conn) {
 	defer client.Close()
 
 	if addr, _, _ := net.SplitHostPort(client.RemoteAddr().String()); !checkAllowIP(addr) {
+		log.Printf("[APP][TLS][%s] IP Not Allow", addr)
 		return
 	}
 
@@ -189,6 +191,7 @@ func handleTLS(client net.Conn) {
 
 	// Handshake Type
 	if data[offset] != 0x01 {
+		log.Printf("[APP][TLS][%s] Not Client Hello", client.RemoteAddr())
 		return
 	}
 	offset += 1
@@ -231,7 +234,8 @@ func handleTLS(client net.Conn) {
 			offset += 2
 
 			// Server Name Type
-			if data[offset] == 0x00 {
+			if data[offset] != 0x00 {
+				log.Printf("[APP][TLS][%s] Not Host Name", client.RemoteAddr())
 				return
 			}
 			offset += 1
@@ -252,6 +256,7 @@ func handleTLS(client net.Conn) {
 	}
 
 	if !checkAllowDomain(domain) {
+		log.Printf("[APP][TLS][%s] Domain Not Allow: %s", client.RemoteAddr(), domain)
 		return
 	}
 
