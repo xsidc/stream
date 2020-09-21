@@ -107,6 +107,8 @@ func handleHTTP(client net.Conn) {
 		return
 	}
 
+	log.Printf("[APP][HTTP] %s <-> %s", client.RemoteAddr(), list["HOST"])
+
 	remote, err := net.Dial("tcp", fmt.Sprintf("%s:80", list["HOST"]))
 	if err != nil {
 		return
@@ -252,6 +254,8 @@ func handleTLS(client net.Conn) {
 	if !checkAllowDomain(domain) {
 		return
 	}
+
+	log.Printf("[APP][TLS] %s <-> %s", client.RemoteAddr(), domain)
 
 	remote, err := net.Dial("tcp", fmt.Sprintf("%s:443", domain))
 	if err != nil {
