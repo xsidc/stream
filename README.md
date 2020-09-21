@@ -5,14 +5,7 @@
 
 ## 食用方法
 ```bash
-# 从 GitHub Actions 或者 Releases 中下载 release.zip 并上传至 VPS 上
-rm -fr release
-mkdir release
-cd release
-cp ../release.zip .
-unzip release.zip
-rm -f release.zip
-./deploy.sh
+curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/cloud/kickstart.sh | bash
 ```
 
 ## 配置文件
