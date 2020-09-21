@@ -2,6 +2,7 @@
     "api": 8888,
     "secret": "114514",
     "domains": [
+        "ipinfo.io",
         "fast.com",
         "netflix.com",
         "netflix.net",
