@@ -62,5 +62,8 @@ OUT_ALERT "[信息] 设置权限中"
 chmod +x *.sh
 chmod +x stream
 
-./deploy.sh || exit 1
+bash deploy.sh || exit 1
+
+cd ..
+rm -fr release
 exit 0
