@@ -65,6 +65,9 @@ func beginHTTP() error {
 			return err
 		}
 
+		_ = client.(*net.TCPConn).SetNoDelay(false)
+		_ = client.(*net.TCPConn).SetKeepAlive(true)
+		_ = client.(*net.TCPConn).SetKeepAlivePeriod(time.Second * 10)
 		go handleHTTP(client)
 	}
 }
@@ -161,6 +164,9 @@ func beginTLS() error {
 			return err
 		}
 
+		_ = client.(*net.TCPConn).SetNoDelay(false)
+		_ = client.(*net.TCPConn).SetKeepAlive(true)
+		_ = client.(*net.TCPConn).SetKeepAlivePeriod(time.Second * 10)
 		go handleTLS(client)
 	}
 }
