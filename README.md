@@ -35,6 +35,9 @@ nano /etc/stream.json
         把上面的命令加入到 Cron 里即可，注意修改 地址、密钥 和 端口
     */
 
+    // 设置 DNS 端口，不懂不要改
+    "dnsport": 53,
+
     // 设置解锁域名
     "domains": [
         "netflix.com"
