@@ -64,7 +64,11 @@ func main() {
 		}
 
 		if strings.EqualFold(Data.Secret, secret) {
-			address, _, _ := net.SplitHostPort(r.RemoteAddr)
+			address := r.URL.Query().Get("addr")
+			if address == "" {
+				address, _, _ = net.SplitHostPort(r.RemoteAddr)
+			}
+
 			fmt.Fprintf(w, "DONE: %s\n", address)
 
 			for i := 0; i < len(Data.AllowedIPs); i++ {
