@@ -18,17 +18,17 @@
 # apt install unzip -y
 
 # 下载程序
-wget -O release.zip https://github.com/aiocloud/stream/releases/download/1.0.1/release.zip
+wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip
 rm -fr release && unzip release.zip && rm -f release.zip
+
+# 升级
+# 如果新版本配置格式有变更，需要自行修改
+# ./upgrade.sh
 
 # 部署
 cd release
 chmod +x *.sh stream
 ./deploy.sh
-
-# 升级
-# 如果新版本配置格式有变更，需要自行修改
-# ./upgrade.sh
 
 # 删除文件
 cd ..
