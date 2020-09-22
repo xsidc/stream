@@ -21,8 +21,8 @@ func beginDNS() {
 	}
 	ServeMux.HandleFunc(".", handleOther)
 
-	TCPSocket = &dns.Server{Net: "tcp", Addr: ":53", Handler: ServeMux}
-	UDPSocket = &dns.Server{Net: "udp", Addr: ":53", Handler: ServeMux}
+	TCPSocket = &dns.Server{Net: "tcp", Addr: fmt.Sprintf(":%d", Data.DNSPort), Handler: ServeMux}
+	UDPSocket = &dns.Server{Net: "udp", Addr: fmt.Sprintf(":%d", Data.DNSPort), Handler: ServeMux}
 
 	go func() { log.Fatalf("[APP][DNS][TCP] %v", TCPSocket.ListenAndServe()) }()
 	go func() { log.Fatalf("[APP][DNS][UDP] %v", UDPSocket.ListenAndServe()) }()

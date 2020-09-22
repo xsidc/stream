@@ -21,6 +21,7 @@ var (
 	Data struct {
 		API        int      `json:"api"`
 		Secret     string   `json:"secret"`
+		DNSPort    int      `json:"dnsport"`
 		Domain     []string `json:"domains"`
 		Address    string   `json:"address"`
 		Upstream   string   `json:"upstream"`

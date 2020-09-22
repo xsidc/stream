@@ -1,6 +1,7 @@
 {
     "api": 8888,
     "secret": "114514",
+    "dnsport": 53,
     "domains": [
         "ipinfo.io",
         "fast.com",
