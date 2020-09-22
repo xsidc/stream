@@ -39,7 +39,7 @@ nano /etc/stream.json
 
         * * * * * curl -fsSL http://11.4.5.14:8888/aio?secret=aioCloud > /dev/null 2>&1 &
 
-        把上面的命令加入到 Cron 里即可，注意修改 地址、密钥 和 端口
+        把上面的命令加入到需要解锁的机器的 Cron 里即可，注意修改 地址、端口 和 密钥
     */
 
     // 设置 DNS 端口，请在清楚明白的情况下修改此值
