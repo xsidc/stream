@@ -59,13 +59,13 @@ func main() {
 	mux.HandleFunc("/aio", func(w http.ResponseWriter, r *http.Request) {
 		secret := r.URL.Query().Get("secret")
 		if secret == "" {
-			fmt.Fprintf(w, "FAIL: No Secret")
+			fmt.Fprintf(w, "FAIL: No Secret\n")
 			return
 		}
 
 		if strings.EqualFold(Data.Secret, secret) {
 			address, _, _ := net.SplitHostPort(r.RemoteAddr)
-			fmt.Fprintf(w, "DONE: %s", address)
+			fmt.Fprintf(w, "DONE: %s\n", address)
 
 			for i := 0; i < len(Data.AllowedIPs); i++ {
 				if Data.AllowedIPs[i] == address {
@@ -80,10 +80,10 @@ func main() {
 			return
 		}
 
-		fmt.Fprintf(w, "FAIL: Unknown Secret")
+		fmt.Fprintf(w, "FAIL: Unknown Secret\n")
 	})
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "OK")
+		fmt.Fprintf(w, "OK\n")
 	})
 
 	log.Fatalf("[APP][API] %v", http.ListenAndServe(fmt.Sprintf(":%d", Data.API), mux))
