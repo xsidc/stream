@@ -28,7 +28,6 @@ jobs:
           export GOARCH=amd64
           go build -a -trimpath -asmflags "-s -w" -ldflags "-s -w" -gcflags "-l=4" -o release/stream
           cp -f default.json release
-          cp -f scripts/installer/*.sh release
 
       - name: UPX Compress
         uses: crazy-max/ghaction-upx@v1
@@ -40,7 +39,7 @@ jobs:
       - name: ZIP Compress
         shell: bash
         run: |
-          zip -9 -r release.zip release/*
+          zip -9 -r release.zip release
 
       - name: Upload
         uses: actions/upload-artifact@v2

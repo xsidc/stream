@@ -50,7 +50,14 @@ else
     exit 1
 fi
 
-OUT_ALERT "[提示] 调整权限中！"
+OUT_ALERT "[信息] 下载程序中"
+cd ~ && rm -fr release
+wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip || exit 1
+
+OUT_ALERT "[信息] 解压程序中"
+unzip release.zip && rm -f release.zip && cd release
+
+OUT_ALERT "[信息] 设置权限中"
 chmod +x stream
 
 OUT_ALERT "[提示] 复制程序中！"
@@ -60,4 +67,5 @@ OUT_ALERT "[提示] 重启服务中！"
 systemctl restart stream
 
 OUT_INFO "[信息] 升级完毕！"
+cd ~ && rm -fr release
 exit 0

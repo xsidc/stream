@@ -50,17 +50,17 @@ else
     exit 1
 fi
 
-OUT_ALERT "[提示] 删除服务中！"
+OUT_ALERT "[提示] 删除服务中"
 systemctl disable --now stream.service
 rm -f /etc/systemd/system/stream.service
 
-OUT_ALERT "[提示] 删除程序中！"
+OUT_ALERT "[提示] 删除程序中"
 rm -f /usr/bin/stream
 
-OUT_ALERT "[提示] 删除配置中！"
+OUT_ALERT "[提示] 删除配置中"
 rm -f /etc/stream.json
 
-OUT_ALERT "[提示] 重载服务中！"
+OUT_ALERT "[提示] 重载服务中"
 systemctl daemon-reload
 
 OUT_INFO "[信息] 卸载完毕！"
