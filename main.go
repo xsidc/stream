@@ -64,9 +64,6 @@ func main() {
 		}
 
 		if strings.EqualFold(Data.Secret, secret) {
-			Mutex.Lock()
-			defer Mutex.Unlock()
-
 			address, _, _ := net.SplitHostPort(r.RemoteAddr)
 			fmt.Fprintf(w, "DONE: %s", address)
 
@@ -76,7 +73,10 @@ func main() {
 				}
 			}
 
+			Mutex.Lock()
 			Data.AllowedIPs = append(Data.AllowedIPs, address)
+			Mutex.Unlock()
+
 			return
 		}
 
