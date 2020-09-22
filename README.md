@@ -10,29 +10,14 @@
 
 ## 部署命令
 ```bash
-# 可能需要安装 unzip 软件包
-# CentOS / RHEL
-# yum install unzip -y
-# Debian / Ubuntu
-# apt update
-# apt install unzip -y
-
-# 下载程序
-wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip
-rm -fr release && unzip release.zip && rm -f release.zip
+# 部署
+curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/kickstart.sh | bash
 
 # 升级
-# 如果新版本配置格式有变更，需要自行修改
-# ./upgrade.sh
+curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/upgrade.sh | bash
 
-# 部署
-cd release
-chmod +x *.sh stream
-./deploy.sh
-
-# 删除文件
-cd ..
-rm -fr release
+# 移除
+curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/remove.sh | bash
 ```
 
 ## 配置文件
