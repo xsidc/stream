@@ -1,6 +1,6 @@
 {
     "api": 8888,
-    "secret": "114514",
+    "secret": "aioCloud",
     "dnsport": 53,
     "domains": [
         "ipinfo.io",

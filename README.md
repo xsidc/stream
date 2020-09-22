@@ -25,7 +25,7 @@ nano /etc/stream.json
     "api": 8888,
 
     // 设置 API 密钥
-    "secret": "114514",
+    "secret": "aioCloud",
 
     /*
         使用 API 接口
