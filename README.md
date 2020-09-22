@@ -30,12 +30,12 @@ nano /etc/stream.json
     /*
         使用 API 接口
 
-        * * * * * curl -fsSL http://11.4.5.14:8888/aio?secret=114514 > /dev/null 2>&1 &
+        * * * * * curl -fsSL http://11.4.5.14:8888/aio?secret=aioCloud > /dev/null 2>&1 &
 
         把上面的命令加入到 Cron 里即可，注意修改 地址、密钥 和 端口
     */
 
-    // 设置 DNS 端口，不懂不要改
+    // 设置 DNS 端口，请在清楚明白的情况下修改此值
     "dnsport": 53,
 
     // 设置解锁域名
@@ -45,8 +45,8 @@ nano /etc/stream.json
 
     // 设置允许的 IP 地址（如果机器多，并且经常变更 IP 地址，建议使用上面的 API 接口）
     "allowedips": [
-        "114.114.114.114",
-        "114.114.115.115"
+        "1.14.5.14",
+        "1.145.1.4",
     ],
 
     // 这里填写解锁机的 IP 地址（用于 DNS 回复）
