@@ -38,7 +38,7 @@ func checkAllowDomain(domain string) bool {
 
 func startHTTP() {
 	for {
-		log.Printf("[APP][HTTP] %v", beginHTTP())
+		log.Printf("[APP][HTTP]\t%v", beginHTTP())
 
 		time.Sleep(time.Second * 10)
 	}
@@ -51,7 +51,7 @@ func beginHTTP() error {
 	}
 	defer ln.Close()
 
-	log.Println("[APP][HTTP] Started")
+	log.Println("[APP][HTTP]\tStarted")
 
 	for {
 		client, err := ln.Accept()
@@ -76,7 +76,7 @@ func handleHTTP(client net.Conn) {
 	defer client.Close()
 
 	if addr, _, _ := net.SplitHostPort(client.RemoteAddr().String()); !checkAllowIP(addr) {
-		log.Printf("[APP][HTTP][%s] IP Not Allow", addr)
+		log.Printf("[APP][HTTP]\t[%s] IP Not Allow", addr)
 		return
 	}
 
@@ -111,7 +111,7 @@ func handleHTTP(client net.Conn) {
 		return
 	}
 
-	log.Printf("[APP][HTTP] %s <-> %s", client.RemoteAddr(), list["HOST"])
+	log.Printf("[APP][HTTP]\t%s <-> %s", client.RemoteAddr(), list["HOST"])
 
 	remote, err := net.Dial("tcp", fmt.Sprintf("%s:80", list["HOST"]))
 	if err != nil {
@@ -137,7 +137,7 @@ func handleHTTP(client net.Conn) {
 
 func startTLS() {
 	for {
-		log.Printf("[APP][TLS] %v", beginTLS())
+		log.Printf("[APP][TLS]\t%v", beginTLS())
 
 		time.Sleep(time.Second * 10)
 	}
@@ -150,7 +150,7 @@ func beginTLS() error {
 	}
 	defer ln.Close()
 
-	log.Println("[APP][TLS] Started")
+	log.Println("[APP][TLS]\tStarted")
 
 	for {
 		client, err := ln.Accept()
@@ -175,7 +175,7 @@ func handleTLS(client net.Conn) {
 	defer client.Close()
 
 	if addr, _, _ := net.SplitHostPort(client.RemoteAddr().String()); !checkAllowIP(addr) {
-		log.Printf("[APP][TLS][%s] IP Not Allow", addr)
+		log.Printf("[APP][TLS]\t[%s] IP Not Allow", addr)
 		return
 	}
 
@@ -197,7 +197,7 @@ func handleTLS(client net.Conn) {
 
 	// Handshake Type
 	if data[offset] != 0x01 {
-		log.Printf("[APP][TLS][%s] Not Client Hello", client.RemoteAddr())
+		log.Printf("[APP][TLS]\t[%s] Not Client Hello", client.RemoteAddr())
 		return
 	}
 	offset += 1
@@ -241,7 +241,7 @@ func handleTLS(client net.Conn) {
 
 			// Server Name Type
 			if data[offset] != 0x00 {
-				log.Printf("[APP][TLS][%s] Not Host Name", client.RemoteAddr())
+				log.Printf("[APP][TLS]\t[%s] Not Host Name", client.RemoteAddr())
 				return
 			}
 			offset += 1
@@ -262,11 +262,11 @@ func handleTLS(client net.Conn) {
 	}
 
 	if !checkAllowDomain(domain) {
-		log.Printf("[APP][TLS][%s] Domain Not Allow: %s", client.RemoteAddr(), domain)
+		log.Printf("[APP][TLS]\t[%s] Domain Not Allow: %s", client.RemoteAddr(), domain)
 		return
 	}
 
-	log.Printf("[APP][TLS] %s <-> %s", client.RemoteAddr(), domain)
+	log.Printf("[APP][TLS]\t%s <-> %s", client.RemoteAddr(), domain)
 
 	remote, err := net.Dial("tcp", fmt.Sprintf("%s:443", domain))
 	if err != nil {

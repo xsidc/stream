@@ -24,10 +24,10 @@ func beginDNS() {
 	TCPSocket = &dns.Server{Net: "tcp", Addr: fmt.Sprintf(":%d", Data.DNSPort), Handler: ServeMux}
 	UDPSocket = &dns.Server{Net: "udp", Addr: fmt.Sprintf(":%d", Data.DNSPort), Handler: ServeMux}
 
-	go func() { log.Fatalf("[APP][DNS][TCP] %v", TCPSocket.ListenAndServe()) }()
-	go func() { log.Fatalf("[APP][DNS][UDP] %v", UDPSocket.ListenAndServe()) }()
+	go func() { log.Fatalf("[APP][DNS][TCP]\t%v", TCPSocket.ListenAndServe()) }()
+	go func() { log.Fatalf("[APP][DNS][UDP]\t%v", UDPSocket.ListenAndServe()) }()
 
-	log.Println("[APP][DNS] Started")
+	log.Println("[APP][DNS]\tStarted")
 }
 
 func handleServerName(w dns.ResponseWriter, r *dns.Msg) {
