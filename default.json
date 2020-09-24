@@ -2,6 +2,10 @@
     "api": 8888,
     "secret": "aioCloud",
     "dnsport": 53,
+    "address": "11.4.5.14",
+    "upstream": "1.1.1.1:53",
+    "allowedips": [],
+
     "domains": [
         "ipinfo.io",
         "fast.com",
@@ -68,8 +72,5 @@
         "hulustream.com",
         "happyon.jp",
         "hulu.jp"
-    ],
-    "allowedips": [],
-    "address": "11.4.5.14",
-    "upstream": "1.1.1.1:53"
+    ]
 }
