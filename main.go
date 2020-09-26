@@ -44,11 +44,11 @@ func main() {
 
 	data, err := ioutil.ReadFile(flags.Path)
 	if err != nil {
-		log.Fatalf("[APP][ioutil.ReadFile]\t%v", err)
+		log.Fatalf("[APP][ioutil.ReadFile] %v", err)
 	}
 
 	if err := json.Unmarshal(data, &Data); err != nil {
-		log.Fatalf("[APP][json.Unmarshal]\t%v", err)
+		log.Fatalf("[APP][json.Unmarshal] %v", err)
 	}
 
 	go startHTTP()
