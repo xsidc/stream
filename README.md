@@ -11,13 +11,13 @@
 ## 部署命令
 ```bash
 # 部署
-curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/installer/kickstart.sh | bash
+curl -fsSL https://git.io/JUVOa | bash
 
 # 升级
-curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/installer/upgrade.sh | bash
+curl -fsSL https://git.io/JUVOK | bash
 
 # 卸载
-curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/installer/remove.sh | bash
+curl -fsSL https://git.io/JUVO6 | bash
 ```
 
 ## 配置文件
