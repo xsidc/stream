@@ -5,7 +5,10 @@
 流媒体解锁后端
 
 ## 推荐系统
+- CentOS 8
+- Debian 9
 - Debian 10
+- Ubuntu 18.04
 - Ubuntu 20.04
 
 ## 部署命令
