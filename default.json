@@ -36,9 +36,13 @@
         "bbcfmt.hs.llnwd.net",
         "bbci.co",
         "bbci.co.uk",
+        "fig.bbc.co.uk",
+        "open.live.bbc.co.uk",
+        "sa.bbc.co.uk",
         "hbo.com",
         "hbogo.com",
         "hbonow.com",
+        "hbomax.com",
         "hbogoasia.com",
         "hbogoasia.hk",
         "bcbolthboa-a.akamaihd.net",
@@ -71,6 +75,8 @@
         "huluim.com",
         "hulustream.com",
         "happyon.jp",
-        "hulu.jp"
+        "hulu.jp",
+        "cwtv.com",
+        "abema.tv"
     ]
 }
