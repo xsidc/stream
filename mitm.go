@@ -80,7 +80,7 @@ func handleHTTP(client net.Conn) {
 		return
 	}
 
-	data := make([]byte, 2048)
+	data := make([]byte, 1400)
 	size, err := client.Read(data)
 	if err != nil {
 		return
@@ -125,12 +125,12 @@ func handleHTTP(client net.Conn) {
 	data = nil
 
 	go func() {
-		_, _ = io.Copy(remote, client)
+		_, _ = io.CopyBuffer(remote, client, make([]byte, 1400))
 		_ = client.SetDeadline(time.Now())
 		_ = remote.SetDeadline(time.Now())
 	}()
 
-	_, _ = io.Copy(client, remote)
+	_, _ = io.CopyBuffer(client, remote, make([]byte, 1400))
 	_ = client.SetDeadline(time.Now())
 	_ = remote.SetDeadline(time.Now())
 }
@@ -179,7 +179,7 @@ func handleTLS(client net.Conn) {
 		return
 	}
 
-	data := make([]byte, 2048)
+	data := make([]byte, 1400)
 	size, err := client.Read(data)
 	if err != nil {
 		return
@@ -280,12 +280,12 @@ func handleTLS(client net.Conn) {
 	data = nil
 
 	go func() {
-		_, _ = io.Copy(remote, client)
+		_, _ = io.CopyBuffer(remote, client, make([]byte, 1400))
 		_ = client.SetDeadline(time.Now())
 		_ = remote.SetDeadline(time.Now())
 	}()
 
-	_, _ = io.Copy(client, remote)
+	_, _ = io.CopyBuffer(client, remote, make([]byte, 1400))
 	_ = client.SetDeadline(time.Now())
 	_ = remote.SetDeadline(time.Now())
 }
