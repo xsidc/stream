@@ -29,7 +29,7 @@ var (
 	}
 	Mutex sync.RWMutex
 
-	version = "1.0.4"
+	version = "1.0.5"
 )
 
 func main() {
