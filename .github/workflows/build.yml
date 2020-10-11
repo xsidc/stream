@@ -1,5 +1,6 @@
 name: aioCloud CI
 on: [push, pull_request]
+
 jobs:
   build:
     name: Build
@@ -50,7 +51,7 @@ jobs:
       - name: Checksum
         shell: bash
         run: |
-          echo "::Set-Env Name=CHECKSUM::$(sha256sum release.zip | awk '{print $1}')"
+          echo "CHECKSUM=$(sha256sum release.zip | awk '{print $1}')" >> $GITHUB_ENV
 
       - name: Release
         uses: softprops/action-gh-release@v1
