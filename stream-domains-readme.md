@@ -170,6 +170,16 @@ d3c7rimkq79yfu.cloudfront.net
 linetv.tw
 ```
 
+// 4gTV
+
+```
+4gtv.tv
+4gtvfreepc-cds.cdn.hinet.net
+4gtvfreepcvod-cds.cdn.hinet.net
+4gtvpc-cds.cdn.hinet.net
+4gtvpcvod-cds.cdn.hinet.net
+```
+
 // 台湾好
 
 ```
