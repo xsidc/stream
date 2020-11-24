@@ -181,7 +181,7 @@ func handleTLS(client net.Conn) {
 
 	data := make([]byte, 1400)
 	size, err := client.Read(data)
-	if err != nil {
+	if err != nil || size < 44 {
 		return
 	}
 	data = data[:size]
@@ -210,34 +210,55 @@ func handleTLS(client net.Conn) {
 	length := int(data[offset])
 	offset += 1
 	offset += length
+	if size < offset+1 {
+		return
+	}
 
 	// Cipher Suites
 	length = (int(data[offset]) << 8) + int(data[offset+1])
 	offset += 2
 	offset += length
+	if size < offset {
+		return
+	}
 
 	// Compression Methods
 	length = int(data[offset])
 	offset += 1
 	offset += length
+	if size < offset {
+		return
+	}
 
 	// Extension Length
 	offset += 2
+	if size < offset+1 {
+		return
+	}
 
 	domain := ""
-	for offset < size && domain == "" {
+	for size > offset+2 && domain == "" {
 		// Extension Type
 		name := (int(data[offset]) << 8) + int(data[offset+1])
 		offset += 2
+		if size < offset+1 {
+			return
+		}
 
 		// Extension Length
 		length = (int(data[offset]) << 8) + int(data[offset+1])
 		offset += 2
+		if size < offset+1 {
+			return
+		}
 
 		// Extension: Server Name
 		if name == 0 {
 			// Server Name List Length
 			offset += 2
+			if size < offset {
+				return
+			}
 
 			// Server Name Type
 			if data[offset] != 0x00 {
@@ -245,10 +266,16 @@ func handleTLS(client net.Conn) {
 				return
 			}
 			offset += 1
+			if size < offset+1 {
+				return
+			}
 
 			// Server Name Length
 			length = (int(data[offset]) << 8) + int(data[offset+1])
 			offset += 2
+			if size < offset+length {
+				return
+			}
 
 			// Server Name
 			domain = string(data[offset : offset+length])
