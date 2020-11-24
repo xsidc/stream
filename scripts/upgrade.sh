@@ -25,6 +25,8 @@ OUT_ALERT() {
 
 OUT_ERROR() {
     echo -e "${CRED}$1${CEND}"
+
+    exit 1
 }
 
 OUT_INFO() {
@@ -47,49 +49,26 @@ elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
     release="centos"
 else
     OUT_ERROR "[错误] 不支持的操作系统！"
-    exit 1
 fi
 
+cd ~
+
 OUT_ALERT "[信息] 下载程序中"
-cd ~ && rm -fr release
+rm -fr release && mkdir release && cd release
 wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip || exit 1
 
 OUT_ALERT "[信息] 解压程序中"
-unzip release.zip && rm -f release.zip && cd release
+unzip release.zip && rm -f release.zip
 
 OUT_ALERT "[信息] 设置权限中"
 chmod +x stream
 
-OUT_ALERT "[提示] 复制配置中！"
-cp -f default.json /etc/stream.json
-
-OUT_ALERT "[提示] 复制程序中！"
+OUT_ALERT "[提示] 复制程序中"
 cp -f stream /usr/bin
 
-OUT_ALERT "[提示] 配置服务中！"
-cat >/etc/systemd/journald.conf <<EOF
-[Journal]
-SystemMaxUse=128M
-ForwardToSyslog=no
-EOF
-cat >/etc/systemd/system/stream.service <<EOF
-[Unit]
-Description=Stream Unlock Service
-After=network.target
+OUT_ALERT "[提示] 重启服务中"
+systemctl restart stream
 
-[Service]
-Type=simple
-ExecStart=/usr/bin/stream -c /etc/stream.json
-Restart=always
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-OUT_ALERT "[提示] 重载服务中！"
-systemctl daemon-reload
-
-OUT_INFO "[信息] 部署完毕！"
+OUT_INFO "[信息] 更新完毕！"
 cd ~ && rm -fr release
 exit 0

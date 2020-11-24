@@ -25,6 +25,8 @@ OUT_ALERT() {
 
 OUT_ERROR() {
     echo -e "${CRED}$1${CEND}"
+
+    exit 1
 }
 
 OUT_INFO() {
@@ -47,25 +49,20 @@ elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
     release="centos"
 else
     OUT_ERROR "[错误] 不支持的操作系统！"
-    exit 1
 fi
 
-OUT_ALERT "[信息] 下载程序中"
-cd ~ && rm -fr release
-wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip || exit 1
+OUT_ALERT "[提示] 删除服务中"
+systemctl disable --now stream.service
+rm -f /etc/systemd/system/stream.service
 
-OUT_ALERT "[信息] 解压程序中"
-unzip release.zip && rm -f release.zip && cd release
+OUT_ALERT "[提示] 删除程序中"
+rm -f /usr/bin/stream
 
-OUT_ALERT "[信息] 设置权限中"
-chmod +x stream
+OUT_ALERT "[提示] 删除配置中"
+rm -f /etc/stream.json
 
-OUT_ALERT "[提示] 复制程序中！"
-cp -f stream /usr/bin
+OUT_ALERT "[提示] 重载服务中"
+systemctl daemon-reload
 
-OUT_ALERT "[提示] 重启服务中！"
-systemctl restart stream
-
-OUT_INFO "[信息] 升级完毕！"
-cd ~ && rm -fr release
+OUT_INFO "[信息] 卸载完毕！"
 exit 0

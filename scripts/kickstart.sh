@@ -25,6 +25,8 @@ OUT_ALERT() {
 
 OUT_ERROR() {
     echo -e "${CRED}$1${CEND}"
+
+    exit 1
 }
 
 OUT_INFO() {
@@ -47,21 +49,53 @@ elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
     release="centos"
 else
     OUT_ERROR "[错误] 不支持的操作系统！"
-    exit 1
 fi
 
-OUT_ALERT "[提示] 删除服务中"
-systemctl disable --now stream.service
-rm -f /etc/systemd/system/stream.service
+cd ~
 
-OUT_ALERT "[提示] 删除程序中"
-rm -f /usr/bin/stream
+OUT_ALERT "[信息] 下载程序中"
+rm -fr release && mkdir release && cd release
+wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip || exit 1
 
-OUT_ALERT "[提示] 删除配置中"
-rm -f /etc/stream.json
+OUT_ALERT "[信息] 解压程序中"
+unzip release.zip && rm -f release.zip
+
+OUT_ALERT "[信息] 设置权限中"
+chmod +x stream
+
+OUT_ALERT "[提示] 复制配置中"
+cp -f default.json /etc/stream.json
+
+OUT_ALERT "[提示] 复制程序中"
+cp -f stream /usr/bin
+
+OUT_ALERT "[提示] 创建用户中"
+userdel -r -f stream
+groupdel stream
+groupadd -g 1234 stream
+useradd -M -s /bin/false -u 1234 -g 1234 stream
+
+OUT_ALERT "[提示] 配置服务中"
+cat >/etc/systemd/system/stream.service <<EOF
+[Unit]
+Description=Stream Unlock Service
+After=network.target
+
+[Service]
+Type=simple
+User=stream
+Group=stream
+ExecStart=/usr/bin/stream -c /etc/stream.json
+Restart=always
+RestartSec=4
+
+[Install]
+WantedBy=multi-user.target
+EOF
 
 OUT_ALERT "[提示] 重载服务中"
 systemctl daemon-reload
 
-OUT_INFO "[信息] 卸载完毕！"
+OUT_INFO "[信息] 部署完毕！"
+cd ~ && rm -fr release
 exit 0
