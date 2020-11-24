@@ -1,5 +1,5 @@
 module github.com/aiocloud/stream
 
-go 1.14
+go 1.15
 
-require github.com/miekg/dns v1.1.31
+require github.com/miekg/dns v1.1.35
