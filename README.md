@@ -14,13 +14,13 @@
 ## 部署命令
 ```bash
 # 部署
-curl -fsSL https://git.io/JUVOa | bash
+curl -fsSL https://git.io/JkMeC | bash
 
 # 升级
-curl -fsSL https://git.io/JUVOK | bash
+curl -fsSL https://git.io/JkMel | bash
 
 # 卸载
-curl -fsSL https://git.io/JUVO6 | bash
+curl -fsSL https://git.io/JkMeR | bash
 ```
 
 ## 配置文件
