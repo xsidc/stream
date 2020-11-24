@@ -54,11 +54,11 @@ fi
 cd ~
 
 OUT_ALERT "[信息] 下载程序中"
-rm -fr release && mkdir release && cd release
+rm -fr release
 wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip || exit 1
 
 OUT_ALERT "[信息] 解压程序中"
-unzip release.zip && rm -f release.zip
+unzip release.zip && rm -f release.zip && cd release
 
 OUT_ALERT "[信息] 设置权限中"
 chmod +x stream
