@@ -69,12 +69,6 @@ cp -f default.json /etc/stream.json
 OUT_ALERT "[提示] 复制程序中"
 cp -f stream /usr/bin
 
-OUT_ALERT "[提示] 创建用户中"
-userdel -r -f stream
-groupdel stream
-groupadd -g 1234 stream
-useradd -M -s /bin/false -u 1234 -g 1234 stream
-
 OUT_ALERT "[提示] 配置服务中"
 cat >/etc/systemd/system/stream.service <<EOF
 [Unit]
@@ -83,8 +77,6 @@ After=network.target
 
 [Service]
 Type=simple
-User=stream
-Group=stream
 ExecStart=/usr/bin/stream -c /etc/stream.json
 Restart=always
 RestartSec=4
