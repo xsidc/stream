@@ -77,6 +77,21 @@ After=network.target
 
 [Service]
 Type=simple
+LimitCPU=infinity
+LimitFSIZE=infinity
+LimitDATA=infinity
+LimitSTACK=infinity
+LimitCORE=infinity
+LimitRSS=infinity
+LimitNOFILE=infinity
+LimitAS=infinity
+LimitNPROC=infinity
+LimitMEMLOCK=infinity
+LimitLOCKS=infinity
+LimitSIGPENDING=infinity
+LimitMSGQUEUE=infinity
+LimitRTPRIO=infinity
+LimitRTTIME=infinity
 ExecStart=/usr/bin/stream -c /etc/stream.json
 Restart=always
 RestartSec=4
