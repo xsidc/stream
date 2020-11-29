@@ -27,7 +27,7 @@ jobs:
           export CGO_ENABLED=1
           export GOOS=linux
           export GOARCH=amd64
-          go build -a -trimpath -asmflags "-s -w" -ldflags "-s -w" -gcflags "-l=4" -o release/stream
+          go build -a -trimpath -asmflags "-s -w" -ldflags "-s -w" -o release/stream
           cp -f default.json release
 
       - name: UPX Compress
@@ -67,6 +67,7 @@ jobs:
             [![](https://img.shields.io/badge/Telegram-Group-blue)](https://t.me/aioCloud) [![](https://img.shields.io/badge/Telegram-Channel-green)](https://t.me/aioCloud_channel)
             ## 更新日志
             * 将会很快更新
+
             ## 校验和
             | 文件名 | SHA256 |
             | :-- | :-- |
