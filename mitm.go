@@ -84,6 +84,10 @@ func handleHTTP(client net.Conn) {
 	}
 	data = data[:size]
 
+	if !bytes.Contains(data, []byte{0x0d, 0x0a, 0x0d, 0x0a}) {
+		return
+	}
+
 	list := make(map[string]string)
 
 	{
