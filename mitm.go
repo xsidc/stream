@@ -84,22 +84,22 @@ func handleHTTP(client net.Conn) {
 	}
 	data = data[:size]
 
-	if !bytes.Contains(data, []byte{0x0d, 0x0a, 0x0d, 0x0a}) {
+	offset := bytes.Index(data, []byte{0x0d, 0x0a, 0x0d, 0x0a})
+	if offset == -1 {
 		return
 	}
+	data = data[:offset]
 
 	list := make(map[string]string)
 
 	{
-		hdr := bytes.Split(bytes.Split(data, []byte{0x0d, 0x0a, 0x0d, 0x0a})[0], []byte{0x0d, 0x0a})
+		hdr := bytes.Split(data, []byte{0x0d, 0x0a})
 		for i := 0; i < len(hdr); i++ {
 			if i == 0 {
 				continue
 			}
 
-			text := string(hdr[i])
-
-			SPL := strings.SplitN(text, ":", 2)
+			SPL := strings.SplitN(string(hdr[i]), ":", 2)
 			if len(SPL) < 2 {
 				continue
 			}
