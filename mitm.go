@@ -88,12 +88,11 @@ func handleHTTP(client net.Conn) {
 	if offset == -1 {
 		return
 	}
-	data = data[:offset]
 
 	list := make(map[string]string)
 
 	{
-		hdr := bytes.Split(data, []byte{0x0d, 0x0a})
+		hdr := bytes.Split(data[:offset], []byte{0x0d, 0x0a})
 		for i := 0; i < len(hdr); i++ {
 			if i == 0 {
 				continue
