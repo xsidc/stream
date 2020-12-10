@@ -1,18 +1,13 @@
-
 ## 主流流媒体域名介绍说明
+以下是常见流媒体域名介绍，按区域及字母排序，方便对照和维护
 
-以下是常见流媒体域名介绍，按区域及字母排序，方便对照和维护。
-
-// ipinfo
-
+ipinfo
 ```
 ipinfo.io
 ```
 
 ### 全球流媒体
-
-// Netflix
-
+Netflix
 ```
 fast.com
 netflix.com
@@ -35,27 +30,22 @@ netflixdnstest9.com
 ```
 
 ### 通用服务域名
-
-// Akamai mPulse API
-
+Akamai mPulse API
 ```
 go-mpulse.net
 ```
 
-// Comcast CTSuite
-
+Comcast CTSuite
 ```
 theplatform.com
 ```
 
-// Verizon Media Platform
-
+Verizon Media Platform
 ```
 uplynk.com
 ```
 
-// Disney CDN
-
+Disney CDN
 ```
 edgedatg.com
 edgedatg.go.com
@@ -63,16 +53,13 @@ cdn.registerdisney.go.com
 ```
 
 ### 香港区
-
-// Bilibili
-
+Bilibili
 ```
 bilibili.com
 hdslb.com
 ```
 
-// Fox+
-
+Fox+
 ```
 foxsports01-i.akamaihd.net
 foxsports02-i.akamaihd.net
@@ -83,8 +70,7 @@ d3cv4a9a9wh0bt.cloudfront.net
 foxplus.com
 ```
 
-// HBO Go
-
+HBO Go
 ```
 bcbolthboa-a.akamaihd.net
 hboasia1-i.akamaihd.net
@@ -101,30 +87,26 @@ hbogoasia.com
 hbogoasia.hk
 ```
 
-// iQIYI
-
+iQIYI
 ```
 iqiyi.com
 iqiyipic.com
 qy.net
 ```
 
-// myTV SUPER
-
+myTV SUPER
 ```
 mytvsuper.com
 tvb.com
 ```
 
-// Now E
-
+Now E
 ```
 nowe.com
 nowestatic.com
 ```
 
-// Viu
-
+Viu
 ```
 d1k2us671qcoau.cloudfront.net
 d2anahhhmp1ffz.cloudfront.net
@@ -135,9 +117,7 @@ viu.tv
 ```
 
 ### 台湾区
-
-// Bahamut
-
+Bahamut
 ```
 bahamut.com.tw
 gamer.com.tw
@@ -145,8 +125,7 @@ gamer-cds.cdn.hinet.net
 gamer2-cds.cdn.hinet.net
 ```
 
-// KKBOX & KKTV
-
+KKBOX & KKTV
 ```
 kfs.io
 kktv-theater.kk.stream
@@ -156,22 +135,19 @@ kktv.com.tw
 kktv.me
 ```
 
-// LiTV
-
+LiTV
 ```
 litvfreemobile-hichannel.cdn.hinet.net
 litv.tv
 ```
 
-// LINE TV
-
+LINE TV
 ```
 d3c7rimkq79yfu.cloudfront.net
 linetv.tw
 ```
 
-// 4gTV
-
+4gTV
 ```
 4gtv.tv
 4gtvfreepc-cds.cdn.hinet.net
@@ -180,17 +156,14 @@ linetv.tw
 4gtvpcvod-cds.cdn.hinet.net
 ```
 
-// 台湾好
-
+台湾好
 ```
 hamifans.emome.net
 skyking.com.tw
 ```
 
 ### 日本区
-
-// AbemaTV
-
+AbemaTV
 ```
 abema.io
 abema.tv
@@ -200,8 +173,7 @@ ameba.jp
 hayabusa.io
 ```
 
-// DAZN
-
+DAZN
 ```
 d151l6v8er5bdm.cloudfront.net
 dazn-api.com
@@ -211,23 +183,20 @@ indazn.com
 intercom.io
 ```
 
-// DMM
-
+DMM
 ```
 dmm-extension.com
 dmm.co.jp
 dmm.com
 ```
 
-// Hulu JP
-
+Hulu JP
 ```
 happyon.jp
 hulu.jp
 ```
 
-// NicoNico
-
+NicoNico
 ```
 dmc.nico
 nicovideo.jp
@@ -235,23 +204,19 @@ nimg.jp
 socdm.com
 ```
 
-// TVer
-
+TVer
 ```
 tver.jp
 ```
 
 ### 英国区
-
-// All4
-
+All4
 ```
 c4assets.com
 channel4.com
 ```
 
-// BBC iPlayer
-
+BBC iPlayer
 ```
 aod-dash-uk-live.akamaized.net
 aod-hls-uk-live.akamaized.net
@@ -265,38 +230,32 @@ bbci.co.uk
 bbcfmt.hs.llnwd.net
 ```
 
-// ITV
-
+ITV
 ```
 itvpnpmobile-a.akamaihd.net
 itv.com
 itvstatic.com
 ```
 
-// My5
-
+My5
 ```
 d349g9zuie06uo.cloudfront.net
 channel5.com
 my5.tv
 ```
 
-// Skysports
-
+Skysports
 ```
 skysports.com
 ```
 
 ### 美国区
-
-// ABC
-
+ABC
 ```
 abc.com
 ```
 
-// CBS
-
+CBS
 ```
 cbs.com
 cbsaavideo.com
@@ -304,8 +263,7 @@ cbsivideo.com
 cbsi.live.ott.irdeto.com
 ```
 
-// CWTV
-
+CWTV
 ```
 cwtv.com
 cwtv-amd-akamai.akamaized.net
@@ -315,8 +273,7 @@ thecwvideo.com
 www.cwseed.com
 ```
 
-// Disney Plus
-
+Disney Plus
 ```
 bamgrid.com
 disney-plus.net
@@ -324,48 +281,41 @@ disneyplus.com
 dssott.com
 ```
 
-// Disney Now
-
+Disney Now
 ```
 disneynow.com
 ```
 
-// encoreTVB
-
+encoreTVB
 ```
 bcbolt446c5271-a.akamaihd.net
 edge.api.brightcove.com
 encoretvb.com
 ```
 
-// ESPN
-
+ESPN
 ```
 espn.com
 espncdn.com
 ```
 
-// Fox Now
-
+Fox Now
 ```
 fox.com
 foxdcg.com
 ```
 
-// Freeform
-
+Freeform
 ```
 freeform.com
 ```
 
-// FX Networks
-
+FX Networks
 ```
 fxnetworks.com
 ```
 
-// Hbo Go & Max
-
+Hbo Go & Max
 ```
 hbo.com
 hbogo.com
@@ -373,47 +323,41 @@ hbomax.com
 hbonow.com
 ```
 
-// Hulu
-
+Hulu
 ```
 hulu.com
 huluim.com
 hulustream.com
 ```
 
-// PBS
-
+PBS
 ```
 pbs.org
 ```
 
-// Peacock
-
+Peacock
 ```
 peacocktv.com
 ```
 
-// SlingTV
-
+SlingTV
 ```
 sling.com
 movetv.com
 ```
 
-// MTV
-
+MTV
 ```
 mtv.com
 mtvnservices.com
 ```
 
-// National Geographic
-
+National Geographic
 ```
 nationalgeographic.com
 ```
-// NBC
 
+NBC
 ```
 nbcuadops-vh.akamaihd.net
 nbc.co
@@ -421,8 +365,7 @@ nbc.com
 nbcuni.com
 ```
 
-// USA Network & MSNBC & syfy
-
+USA Network & MSNBC & syfy
 ```
 tve-static-syfy.akamaized.net
 tve-static-telemundo.akamaized.net
