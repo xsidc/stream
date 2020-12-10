@@ -89,13 +89,17 @@ func handleHTTP(client net.Conn) {
 	{
 		hdr := bytes.Split(bytes.Split(data, []byte{0x0d, 0x0a, 0x0d, 0x0a})[0], []byte{0x0d, 0x0a})
 		for i := 0; i < len(hdr); i++ {
-			text := string(hdr[i])
-
 			if i == 0 {
 				continue
 			}
 
+			text := string(hdr[i])
+
 			SPL := strings.SplitN(text, ":", 2)
+			if len(SPL) < 2 {
+				continue
+			}
+
 			list[strings.ToUpper(strings.TrimSpace(SPL[0]))] = strings.TrimSpace(SPL[1])
 		}
 	}
