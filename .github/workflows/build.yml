@@ -9,7 +9,7 @@ jobs:
       - name: Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.15.x
+          go-version: 1.16.x
 
       - name: ZIP
         shell: bash
@@ -19,6 +19,11 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Dependentes
+        shell: bash
+        run: |
+          go mod download
 
       - name: Build
         shell: bash
