@@ -209,6 +209,13 @@ TVer
 tver.jp
 ```
 
+### 韩国区
+Naver TV
+```
+naver.com
+smartmediarep.com
+```
+
 ### 英国区
 All4
 ```
