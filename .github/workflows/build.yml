@@ -33,7 +33,7 @@ jobs:
           export GOOS=linux
           export GOARCH=amd64
           go build -a -trimpath -asmflags "-s -w" -ldflags "-s -w" -o release/stream
-          cp -f default.json release
+          cp -f example.json release
 
       - name: UPX Compress
         uses: crazy-max/ghaction-upx@v1
