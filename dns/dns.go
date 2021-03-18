@@ -24,7 +24,7 @@ func Listen(s string, list []string) {
 	mux.HandleFunc(".", handleOther)
 
 	tcpSocket = &mdns.Server{Net: "tcp", Addr: s, Handler: mux}
-	tcpSocket = &mdns.Server{Net: "udp", Addr: s, Handler: mux}
+	udpSocket = &mdns.Server{Net: "udp", Addr: s, Handler: mux}
 
 	go func() { log.Fatalf("[DNS][TCP] %v", tcpSocket.ListenAndServe()) }()
 	go func() { log.Fatalf("[DNS][UDP] %v", udpSocket.ListenAndServe()) }()
