@@ -35,16 +35,14 @@ func ParseCIDR(s string) *net.IPNet {
 }
 
 func Listen(addr string) {
-	go func() {
-		mux := http.NewServeMux()
-		mux.HandleFunc("/aio", handleCreate)
-		mux.HandleFunc("/purge", handlePurge)
-		mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-			w.WriteHeader(404)
-		})
+	mux := http.NewServeMux()
+	mux.HandleFunc("/aio", handleCreate)
+	mux.HandleFunc("/purge", handlePurge)
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(404)
+	})
 
-		log.Fatalf("[API] %v", http.ListenAndServe(addr, mux))
-	}()
+	log.Fatalf("[API] %v", http.ListenAndServe(addr, mux))
 }
 
 func Fetch(s string) bool {
