@@ -5,6 +5,9 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/aiocloud/stream/api"
 	"github.com/aiocloud/stream/dns"
@@ -70,5 +73,11 @@ func main() {
 		dns.Listen(Data.DNS.Addr, Data.Domains)
 	}
 
-	api.Listen(Data.API.Addr)
+	if Data.API.Addr != "" {
+		api.Listen(Data.API.Addr)
+	}
+
+	channel := make(chan os.Signal, 1)
+	signal.Notify(channel, syscall.SIGINT, syscall.SIGTERM)
+	<-channel
 }
