@@ -54,6 +54,10 @@ func main() {
 	dns.Addr = Data.DNS.Addr
 	dns.Upstream = Data.DNS.Upstream
 
+	for i := 0; i < len(Data.Allowed); i++ {
+		api.Create(Data.Allowed[i])
+	}
+
 	for i := 0; i < len(Data.MiTM.HTTP); i++ {
 		mitm.ListenHTTP(Data.MiTM.HTTP[i])
 	}
