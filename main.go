@@ -62,6 +62,9 @@ func main() {
 		mitm.ListenTLS(Data.MiTM.TLS[i])
 	}
 
-	dns.Listen(Data.DNS.Addr, Data.Domains)
+	if dns.Addr != "" {
+		dns.Listen(Data.DNS.Addr, Data.Domains)
+	}
+
 	api.Listen(Data.API.Addr)
 }
