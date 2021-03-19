@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/aiocloud/stream/api"
+	"github.com/aiocloud/stream/dns"
 )
 
 func beginHTTP(addr string) error {
@@ -72,7 +73,7 @@ func handleHTTP(client net.Conn, s string) {
 
 	log.Printf("[HTTP][%s] %s <-> %s", s, client.RemoteAddr(), list["HOST"])
 
-	remote, err := net.Dial("tcp", net.JoinHostPort(list["HOST"], s))
+	remote, err := dns.Dial("tcp", net.JoinHostPort(list["HOST"], s))
 	if err != nil {
 		return
 	}

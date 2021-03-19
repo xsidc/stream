@@ -1,7 +1,9 @@
 package dns
 
 import (
+	"context"
 	"log"
+	"net"
 
 	mdns "github.com/miekg/dns"
 )
@@ -13,6 +15,14 @@ var (
 	mux       *mdns.ServeMux
 	tcpSocket *mdns.Server
 	udpSocket *mdns.Server
+	dialer    = net.Dialer{
+		Resolver: &net.Resolver{
+			PreferGo: true,
+			Dial: func(ctx context.Context, network, address string) (net.Conn, error) {
+				return net.Dial("udp", Upstream)
+			},
+		},
+	}
 )
 
 func Listen(s string, list []string) {
@@ -30,4 +40,12 @@ func Listen(s string, list []string) {
 	go func() { log.Fatalf("[DNS][UDP] %v", udpSocket.ListenAndServe()) }()
 
 	log.Println("[DNS] Started")
+}
+
+func Dial(network, address string) (net.Conn, error) {
+	return dialer.Dial(network, address)
+}
+
+func DialContext(ctx context.Context, network, address string) (net.Conn, error) {
+	return dialer.DialContext(ctx, network, address)
 }

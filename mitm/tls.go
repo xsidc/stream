@@ -5,6 +5,7 @@ import (
 	"net"
 
 	"github.com/aiocloud/stream/api"
+	"github.com/aiocloud/stream/dns"
 )
 
 func beginTLS(addr string) error {
@@ -140,7 +141,7 @@ func handleTLS(client net.Conn, s string) {
 
 	log.Printf("[TLS][%s] %s <-> %s", s, client.RemoteAddr(), domain)
 
-	remote, err := net.Dial("tcp", net.JoinHostPort(domain, s))
+	remote, err := dns.Dial("tcp", net.JoinHostPort(domain, s))
 	if err != nil {
 		return
 	}
