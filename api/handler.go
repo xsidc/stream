@@ -30,11 +30,6 @@ func handleCreate(w http.ResponseWriter, r *http.Request) {
 		addr, _, _ = net.SplitHostPort(r.RemoteAddr)
 	}
 
-	if Fetch(addr) {
-		write(w, fmt.Sprintf("DONE: %s\n", addr))
-		return
-	}
-
 	if Create(addr) {
 		write(w, fmt.Sprintf("DONE: %s\n", addr))
 		return
