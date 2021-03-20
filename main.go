@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -16,8 +17,10 @@ import (
 
 var (
 	flags struct {
-		Path string
+		Path    string
+		VerCode bool
 	}
+	version = "1.1.0"
 
 	Data struct {
 		API struct {
@@ -40,7 +43,13 @@ var (
 
 func main() {
 	flag.StringVar(&flags.Path, "c", "/etc/stream.json", "Path")
+	flag.BoolVar(&flags.VerCode, "v", false, "VerCode")
 	flag.Parse()
+
+	if flags.VerCode {
+		fmt.Println(version)
+		return
+	}
 
 	{
 		data, err := ioutil.ReadFile(flags.Path)

@@ -64,7 +64,7 @@ OUT_ALERT "[信息] 设置权限中"
 chmod +x stream
 
 OUT_ALERT "[提示] 复制配置中"
-cp -f default.json /etc/stream.json
+cp -f example.json /etc/stream.json
 
 OUT_ALERT "[提示] 复制程序中"
 cp -f stream /usr/bin
