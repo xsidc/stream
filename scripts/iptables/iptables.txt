@@ -1,0 +1,8 @@
+iptables -t mangle -A PREROUTING -j CONNMARK --restore-mark
+iptables -t mangle -A PREROUTING -m mark ! --mark 0 -j ACCEPT
+iptables -t mangle -A PREROUTING -i wg0 -j MARK --set-mark 1
+iptables -t mangle -A PREROUTING -m mark ! --mark 0 -j CONNMARK --save-mark
+iptables -t mangle -A OUTPUT -j CONNMARK --restore-mark
+
+ip rule add fwmark 1 table 100
+ip route replace 0.0.0.0/0 via 10.0.0.100 dev wg0 table 100
