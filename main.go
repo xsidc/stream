@@ -63,7 +63,7 @@ func main() {
 	}
 
 	api.Secret = Data.API.Secret
-	dns.Addr = Data.DNS.Addr
+	dns.Addr = Data.DNS.NyIP
 	dns.Upstream = Data.DNS.Upstream
 
 	for i := 0; i < len(Data.Allowed); i++ {
