@@ -20,7 +20,7 @@ var (
 		Path    string
 		VerCode bool
 	}
-	version = "1.1.0"
+	version = "1.1.1"
 
 	Data struct {
 		API struct {
@@ -78,7 +78,7 @@ func main() {
 		mitm.ListenTLS(Data.MiTM.TLS[i])
 	}
 
-	if dns.Addr != "" {
+	if Data.DNS.Addr != "" {
 		dns.Listen(Data.DNS.Addr, Data.Domains)
 	}
 
