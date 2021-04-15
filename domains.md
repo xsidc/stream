@@ -56,7 +56,16 @@ cdn.registerdisney.go.com
 Bilibili
 ```
 bilibili.com
+biligame.com
+biligame.net
+bilivideo.com
+bilivideo.cn
+acgvideo.com
 hdslb.com
+acg.tv
+b23.tv
+biliapi.com
+biliapi.net
 ```
 
 Fox+

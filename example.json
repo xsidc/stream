@@ -9,8 +9,12 @@
         "upstream": "1.1.1.1:53"
     },
     "mitm": {
-        "http": [ ":80" ],
-        "tls": [ ":443" ]
+        "http": [
+            ":80"
+        ],
+        "tls": [
+            ":443"
+        ]
     },
     "allowed": [
         "1.1.1.0/24"
@@ -42,7 +46,16 @@
         "edgedatg.go.com",
         "cdn.registerdisney.go.com",
         "bilibili.com",
+        "biligame.com",
+        "biligame.net",
+        "bilivideo.com",
+        "bilivideo.cn",
+        "acgvideo.com",
         "hdslb.com",
+        "acg.tv",
+        "b23.tv",
+        "biliapi.com",
+        "biliapi.net",
         "foxsports01-i.akamaihd.net",
         "foxsports02-i.akamaihd.net",
         "foxsports03-i.akamaihd.net",
