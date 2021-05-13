@@ -20,7 +20,7 @@ var (
 		Path    string
 		VerCode bool
 	}
-	version = "1.1.2"
+	version = "1.1.3"
 
 	Data struct {
 		API struct {
