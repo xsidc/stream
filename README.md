@@ -11,7 +11,7 @@
 
 ## 一键部署
 ```bash
-curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/smartdns/scripts/kickstart.sh | bash
+curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/stream/scripts/kickstart.sh | bash
 ```
 
 ## 配置文件
