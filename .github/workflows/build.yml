@@ -28,8 +28,9 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          export GOROOT_FINAL=/usr
           export CGO_ENABLED=1
+          export GOROOT_FINAL=/usr
+
           export GOOS=linux
           export GOARCH=amd64
           go build -a -trimpath -asmflags "-s -w" -ldflags "-s -w" -o release/stream
