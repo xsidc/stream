@@ -102,7 +102,8 @@ OUT_ALERT "[提示] 重载服务中"
 systemctl daemon-reload
 
 OUT_ALERT "[提示] 启动服务中"
-systemctl daemon-reload
+systemctl enable --now stream
+systemctl enable --now smartdns
 
 OUT_INFO  "[信息] 部署完毕！"
 OUT_ALERT "[提示] 您的 DNS 地址 $CURRENT:53"
