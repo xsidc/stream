@@ -26,7 +26,7 @@ OUT_ALERT() {
 OUT_ERROR() {
     echo -e "${CRED}$1${CEND}"
 
-    exit 1
+    exit $?
 }
 
 OUT_INFO() {
@@ -55,7 +55,7 @@ cd ~
 
 OUT_ALERT "[信息] 下载程序中"
 rm -fr release
-wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip || exit 1
+wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip || OUT_ERROR "下载失败！"
 
 OUT_ALERT "[信息] 解压程序中"
 unzip release.zip && rm -f release.zip && cd release
@@ -77,21 +77,6 @@ After=network.target
 
 [Service]
 Type=simple
-LimitCPU=infinity
-LimitFSIZE=infinity
-LimitDATA=infinity
-LimitSTACK=infinity
-LimitCORE=infinity
-LimitRSS=infinity
-LimitNOFILE=infinity
-LimitAS=infinity
-LimitNPROC=infinity
-LimitMEMLOCK=infinity
-LimitLOCKS=infinity
-LimitSIGPENDING=infinity
-LimitMSGQUEUE=infinity
-LimitRTPRIO=infinity
-LimitRTTIME=infinity
 ExecStart=/usr/bin/stream -c /etc/stream.json
 Restart=always
 RestartSec=4
@@ -102,6 +87,9 @@ EOF
 
 OUT_ALERT "[提示] 重载服务中"
 systemctl daemon-reload
+
+OUT_ALERT "[提示] 部署 SmartDNS 中"
+(curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/stream/scripts/smartdns.sh | bash > /tmp/smartdns.log 2>&1) || OUT_ERROR "部署失败！"
 
 OUT_INFO "[信息] 部署完毕！"
 cd ~ && rm -fr release

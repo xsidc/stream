@@ -4,6 +4,8 @@
 
 流媒体解锁后端
 
+[部署教程](DEPLOY.md)
+
 ## 推荐系统
 - Debian 10
 - Ubuntu 20.04
@@ -12,19 +14,20 @@
 ## 部署命令
 ```bash
 # 部署
-curl -fsSL https://git.io/JkMeC | bash
+curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/smartdns/scripts/kickstart.sh | bash
 
 # 升级
-curl -fsSL https://git.io/JkMel | bash
+curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/smartdns/scripts/upgrade.sh | bash
 
 # 卸载
-curl -fsSL https://git.io/JkMeR | bash
+curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/smartdns/scripts/remove.sh | bash
 ```
 
 ## 配置文件
 ```bash
 nano /etc/stream.json
 ```
+
 ```jsonc
 /*  不要复制这里的配置，这里的配置仅作解释用
     不要复制这里的配置，这里的配置仅作解释用
@@ -48,7 +51,7 @@ nano /etc/stream.json
 
     // DNS
     "dns": {
-        // 上游 DNS 地址，解析其他域名使用
+        // 不懂不要改，默认使用本地 SmartDNS 作为缓存
         "upstream": "127.0.0.1:5353"
     },
 

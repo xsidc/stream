@@ -4,7 +4,7 @@
         "secret": "ccd6c0fe-c4f0-4d36-8dbc-73cd1674dab7"
     },
     "dns": {
-        "upstream": "1.1.1.1:53"
+        "upstream": "127.0.0.1:5353"
     },
     "mitm": {
         "http": [
@@ -14,9 +14,7 @@
             ":443"
         ]
     },
-    "allowed": [
-        "1.1.1.0/24"
-    ],
+    "allowed": [],
     "domains": [
         "ipinfo.io",
         "fast.com",
