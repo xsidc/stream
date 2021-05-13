@@ -63,7 +63,6 @@ func main() {
 	}
 
 	api.Secret = Data.API.Secret
-	dns.Addr = Data.DNS.MyIP
 	dns.Upstream = Data.DNS.Upstream
 
 	for i := 0; i < len(Data.Allowed); i++ {
@@ -76,10 +75,6 @@ func main() {
 
 	for i := 0; i < len(Data.MiTM.TLS); i++ {
 		mitm.ListenTLS(Data.MiTM.TLS[i])
-	}
-
-	if Data.DNS.Addr != "" {
-		dns.Listen(Data.DNS.Addr, Data.Domains)
 	}
 
 	if Data.API.Addr != "" {

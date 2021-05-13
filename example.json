@@ -4,8 +4,6 @@
         "secret": "ccd6c0fe-c4f0-4d36-8dbc-73cd1674dab7"
     },
     "dns": {
-        "addr": ":53",
-        "myip": "1.1.1.1",
         "upstream": "1.1.1.1:53"
     },
     "mitm": {
