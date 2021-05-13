@@ -53,6 +53,18 @@ fi
 
 cd ~
 
+OUT_ALERT "[提示] 部署 SmartDNS 中"
+(curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/stream/scripts/smartdns.sh | bash) || OUT_ERROR "部署 SmartDNS 失败！"
+
+OUT_ALERT "[提示] 生成密钥中"
+SECRET=$(openssl rand -hex 12)
+
+OUT_ALERT "[提示] 获取地址中"
+CURRENT=$(curl -fsSL -4 https://www.cloudflare.com/cdn-cgi/trace | grep ip | tr -d 'ip=')
+if [[ "$CURRENT" == "" ]]; then
+    OUT_ERROR "[错误] 获取地址失败！"
+fi
+
 OUT_ALERT "[信息] 下载程序中"
 rm -fr release
 wget -O release.zip https://github.com/aiocloud/stream/releases/latest/download/release.zip || OUT_ERROR "下载失败！"
@@ -65,6 +77,7 @@ chmod +x stream
 
 OUT_ALERT "[提示] 复制配置中"
 cp -f example.json /etc/stream.json
+sed -i "s/ccd6c0fe-c4f0-4d36-8dbc-73cd1674dab7/$SECRET/" /etc/stream.json
 
 OUT_ALERT "[提示] 复制程序中"
 cp -f stream /usr/bin
@@ -88,9 +101,11 @@ EOF
 OUT_ALERT "[提示] 重载服务中"
 systemctl daemon-reload
 
-OUT_ALERT "[提示] 部署 SmartDNS 中"
-(curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/stream/scripts/smartdns.sh | bash > /tmp/smartdns.log 2>&1) || OUT_ERROR "部署 SmartDNS 失败！"
+OUT_ALERT "[提示] 启动服务中"
+systemctl daemon-reload
 
-OUT_INFO "[信息] 部署完毕！"
+OUT_INFO  "[信息] 部署完毕！"
+OUT_ALERT "[提示] 您的 API 密钥为 $SECRET"
+OUT_ALERT "[提示] 您的 API 地址为 http://$CURRENT:8888/aio?secret=$SECRET"
 cd ~ && rm -fr release
 exit 0

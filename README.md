@@ -4,23 +4,14 @@
 
 流媒体解锁后端
 
-[部署教程](DEPLOY.md)
-
 ## 推荐系统
 - Debian 10
 - Ubuntu 20.04
 - CentOS 8 Stream
 
-## 部署命令
+## 一键部署
 ```bash
-# 部署
 curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/smartdns/scripts/kickstart.sh | bash
-
-# 升级
-curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/smartdns/scripts/upgrade.sh | bash
-
-# 卸载
-curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/smartdns/scripts/remove.sh | bash
 ```
 
 ## 配置文件
