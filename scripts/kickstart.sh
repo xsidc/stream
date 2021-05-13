@@ -105,7 +105,8 @@ OUT_ALERT "[提示] 启动服务中"
 systemctl daemon-reload
 
 OUT_INFO  "[信息] 部署完毕！"
-OUT_ALERT "[提示] 您的 API 密钥为 $SECRET"
-OUT_ALERT "[提示] 您的 API 地址为 http://$CURRENT:8888/aio?secret=$SECRET"
+OUT_ALERT "[提示] 您的 DNS 地址 $CURRENT:53"
+OUT_ALERT "[提示] 您的 API 密钥 $SECRET"
+OUT_ALERT "[提示] 您的 API 地址 http://$CURRENT:8888/aio?secret=$SECRET"
 cd ~ && rm -fr release
 exit 0

@@ -28,8 +28,6 @@ var (
 			Secret string `json:"secret"`
 		} `json:"api"`
 		DNS struct {
-			Addr     string `json:"addr"`
-			MyIP     string `json:"myip"`
 			Upstream string `json:"upstream"`
 		} `json:"dns"`
 		MiTM struct {
