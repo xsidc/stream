@@ -89,7 +89,7 @@ OUT_ALERT "[提示] 重载服务中"
 systemctl daemon-reload
 
 OUT_ALERT "[提示] 部署 SmartDNS 中"
-(curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/stream/scripts/smartdns.sh | bash > /tmp/smartdns.log 2>&1) || OUT_ERROR "部署失败！"
+(curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/stream/scripts/smartdns.sh | bash > /tmp/smartdns.log 2>&1) || OUT_ERROR "部署 SmartDNS 失败！"
 
 OUT_INFO "[信息] 部署完毕！"
 cd ~ && rm -fr release

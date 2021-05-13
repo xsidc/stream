@@ -51,15 +51,21 @@ else
     OUT_ERROR "[错误] 不支持的操作系统！"
 fi
 
-OUT_ALERT "[提示] 删除服务中"
+OUT_ALERT "[提示] 停止服务中"
 systemctl disable --now stream.service
+systemctl disable --now smartdns.service
+
+OUT_ALERT "[提示] 删除服务中"
 rm -f /etc/systemd/system/stream.service
+rm -f /etc/systemd/system/smartdns.service
 
 OUT_ALERT "[提示] 删除程序中"
 rm -f /usr/bin/stream
+rm -f /usr/bin/smartdns
 
 OUT_ALERT "[提示] 删除配置中"
-rm -f /etc/stream.json
+rm -f  /etc/stream.json
+rm -fr /etc/smartdns
 
 OUT_ALERT "[提示] 重载服务中"
 systemctl daemon-reload
