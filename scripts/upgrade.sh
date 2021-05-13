@@ -67,7 +67,7 @@ OUT_ALERT "[提示] 复制程序中"
 cp -f stream /usr/bin
 
 OUT_ALERT "[提示] 更新 SmartDNS 中"
-(curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/stream/scripts/smartdns.sh | bash > /tmp/smartdns.log 2>&1) || OUT_ERROR "更新 SmartDNS 失败！"
+(curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/smartdns.sh | bash > /tmp/smartdns.log 2>&1) || OUT_ERROR "更新 SmartDNS 失败！"
 
 OUT_ALERT "[提示] 重载服务中"
 systemctl daemon-reload

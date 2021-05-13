@@ -37,6 +37,11 @@ else
     exit 1
 fi
 
+CURRENT=$(curl -fsSL -4 https://www.cloudflare.com/cdn-cgi/trace | grep ip | tr -d 'ip=')
+if [[ "$CURRENT" == "" ]]; then
+    exit 1
+fi
+
 if [[ "$release" == "centos" ]]; then
     yum install openssl-devel pkgconfig make gcc git -y || exit $?
 else
@@ -47,24 +52,14 @@ fi
 cd /opt && rm -fr smartdns
 git clone https://github.com/pymumu/smartdns || exit $?
 
-cd smartdns
-make -j$(nproc) || exit $?
-
+cd smartdns && make -j$(nproc) || exit $?
 cd src && cp -f smartdns /usr/bin/smartdns
 
 rm -fr /etc/smartdns && mkdir /etc/smartdns
-
-CURRENT=$(curl -fsSL -4 https://www.cloudflare.com/cdn-cgi/trace | grep ip | tr -d 'ip=')
-if [[ "$CURRENT" == "" ]]; then
-    exit 1
-fi
-
-wget -O /etc/smartdns/smartdns.conf          https://cdn.jsdelivr.net/gh/aiocloud/stream/smartdns/smartdns.conf    || exit $?
-wget -O /etc/smartdns/stream.conf            https://cdn.jsdelivr.net/gh/aiocloud/stream/smartdns/stream.conf      || exit $?
-wget -O /etc/systemd/system/smartdns.service https://cdn.jsdelivr.net/gh/aiocloud/stream/smartdns/smartdns.service || exit $?
+wget -O /etc/smartdns/smartdns.conf          https://raw.githubusercontent.com/aiocloud/stream/master/smartdns/smartdns.conf    || exit $?
+wget -O /etc/smartdns/stream.conf            https://raw.githubusercontent.com/aiocloud/stream/master/smartdns/stream.conf      || exit $?
+wget -O /etc/systemd/system/smartdns.service https://raw.githubusercontent.com/aiocloud/stream/master/smartdns/smartdns.service || exit $?
 sed -i "s/1.1.1.1/$CURRENT/" /etc/smartdns/stream.conf
-
-systemctl daemon-reload
 
 cd /opt && rm -fr smartdns
 exit 0

@@ -54,7 +54,7 @@ fi
 cd ~
 
 OUT_ALERT "[提示] 部署 SmartDNS 中"
-(curl -fsSL https://cdn.jsdelivr.net/gh/aiocloud/stream/scripts/smartdns.sh | bash) || OUT_ERROR "部署 SmartDNS 失败！"
+(curl -fsSL https://raw.githubusercontent.com/aiocloud/stream/master/scripts/smartdns.sh | bash) || OUT_ERROR "部署 SmartDNS 失败！"
 
 OUT_ALERT "[提示] 生成密钥中"
 SECRET=$(openssl rand -hex 12)
