@@ -35,7 +35,6 @@ var (
 			TLS  []string `json:"tls"`
 		} `json:"mitm"`
 		Allowed []string `json:"allowed"`
-		Domains []string `json:"domains"`
 	}
 )
 
