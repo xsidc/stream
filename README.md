@@ -35,6 +35,8 @@ curl -fsSL https://git.io/JkMeR | bash
 Stream
 ```
 /etc/stream.json
+#访问端口 "addr": ":8888",
+#访问秘钥 "secret": "weiguanyun"
 ```
 SmartDNS
 ```
