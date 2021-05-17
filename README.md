@@ -48,6 +48,12 @@ syosetu.com 日本
 rakuten.co.jp 日本
 ```
 
+## DDNSAPI
+```
+curl -fsSL http://DNSIP:8888/aio?secret=weiguanyun
+注意替换 IP 和端口，写入 crontab 即可
+```
+
 ## 控制命令
 ```
 # 启动服务并开启自启
