@@ -44,6 +44,7 @@ SmartDNS
 
 请自行增加解锁内容
 twitter.com 全国
+api.twitter.com 全国
 syosetu.com 日本
 rakuten.co.jp 日本
 ```
