@@ -47,6 +47,8 @@ twitter.com 全国
 api.twitter.com 全国
 syosetu.com 日本
 rakuten.co.jp 日本
+
+设置好记得重启主机reboot
 ```
 
 ## DDNSAPI
