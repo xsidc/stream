@@ -40,6 +40,14 @@ Stream
 
 请自行增加解锁内容
 twitter.com 全国
+pscp.tv 全国
+periscope.tv 全国
+t.co 全国
+twimg.co 全国
+twimg.com 全国
+twitpic.com 全国
+twitter.jp 全国
+vine.co 全国
 syosetu.com 日本
 rakuten.co.jp 日本
 
