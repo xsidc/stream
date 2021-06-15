@@ -37,18 +37,12 @@ Stream
 /etc/stream.json
 # 访问端口 "addr": ":8888",
 # 访问秘钥 "secret": "weiguanyun"
-```
-SmartDNS
-```
-/etc/smartdns/smartdns.conf
 
 请自行增加解锁内容
 twitter.com 全国
-api.twitter.com 全国
 syosetu.com 日本
 rakuten.co.jp 日本
 
-设置好记得重启主机reboot
 ```
 
 ## DDNSAPI
