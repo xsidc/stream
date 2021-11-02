@@ -50,6 +50,17 @@ twitter.jp 全国
 vine.co 全国
 syosetu.com 日本
 rakuten.co.jp 日本
+disney-plus.net 美国 新加坡
+disneyplus.com 美国 新加坡
+cdn.registerdisney.go.com 美国 新加坡
+disneynow.com 美国 新加坡
+dssott.com 美国 新加坡
+bamgrid.com 美国 新加坡
+go-mpulse.net 美国 新加坡
+gstatic.com 美国 新加坡
+ 
+
+
 
 ```
 
