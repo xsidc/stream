@@ -62,7 +62,6 @@ googlevideo.com 全国
 youtube.com 全国
 ytimg.com 全国
 googleapis.com 全国
-googleapis.com 全国
 yt3.ggpht.com 全国
 
 更多列表https://cdn.jsdelivr.net/gh/aiocloud/stream@main/ruleset/allinone.list
