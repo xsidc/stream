@@ -51,6 +51,14 @@ else
     OUT_ERROR "[错误] 不支持的操作系统！"
 fi
 
+if [[ x"${release}" == x"centos" ]]; then
+    yum install epel-release -y
+    yum install wget curl unzip zip -y
+else
+    apt update -y
+    apt install wget curl unzip zip -y
+fi
+
 cd ~
 
 OUT_ALERT "[提示] 部署 SmartDNS 中"
